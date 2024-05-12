@@ -1,6 +1,5 @@
 package com.example.todoapp
 
-import android.annotation.SuppressLint
 import android.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -28,11 +27,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var adapter: TodoAdapter
     private lateinit var viewModel:MainActivityData
 
-    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val recyclerView:RecyclerView = findViewById(R.id.rvTask)
+        val recyclerView:RecyclerView = findViewById(R.id.rvTodoList)
         val repository=TodoRepository(TodoDatabase.getInstance(this))
 
 
@@ -54,7 +52,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        val addItem:Button=findViewById(R.id.btnAdditem)
+        val addItem:Button=findViewById(R.id.btnadditem)
 
         addItem.setOnClickListener{
             displayAlert(repository)
