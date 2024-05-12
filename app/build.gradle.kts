@@ -1,7 +1,9 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.kapt)
 }
+
 
 android {
     namespace = "com.example.todoapp"
@@ -36,15 +38,19 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation("androidx.recyclerview:recyclerview:1.3.1")
+    implementation("androidx.room:room-runtime:2.5.2") // Separate the kapt dependency
+    kapt("androidx.room:room-compiler:2.5.2") // Use kapt for Room's compiler
+    implementation("androidx.room:room-ktx:2.5.2") // Add room-ktx dependency
+
     implementation(libs.androidx.constraintlayout)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
+
 
